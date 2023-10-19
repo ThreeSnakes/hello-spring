@@ -3,7 +3,6 @@ package hello.hellospring.controller;
 import hello.hellospring.controller.dto.MemberForm;
 import hello.hellospring.domain.Member;
 import hello.hellospring.service.MemberService;
-import hello.hellospring.service.MemberService2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,12 +18,11 @@ public class MemberController {
     private MemberService memberService;
 
     // Bean을 직접 등록해서 사용한 서비스
-    private MemberService2 memberService2;
+    private MemberService memberService2;
 
     @Autowired
-    public MemberController(MemberService memberService, MemberService2 memberService2) {
+    public MemberController(MemberService memberService) {
         this.memberService = memberService;
-        this.memberService2 = memberService2;
     }
 
     @GetMapping("/members/new")
