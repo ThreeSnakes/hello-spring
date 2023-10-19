@@ -37,7 +37,7 @@ public class MemberController {
         Member newMember = new Member();
         newMember.setName(form.getName());
 
-        memberService.join(newMember);
+        memberService2.join(newMember);
 
         // Redirect를 한다.
         return "redirect:/";
@@ -45,7 +45,7 @@ public class MemberController {
 
     @GetMapping("/members")
     public String list(Model model) {
-        List<Member> members = memberService.fetchMembers();
+        List<Member> members = memberService2.fetchMembers();
         model.addAttribute("members", members);
 
         return "member/memberList";
