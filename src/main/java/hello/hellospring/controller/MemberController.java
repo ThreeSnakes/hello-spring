@@ -13,12 +13,7 @@ import java.util.List;
 
 @Controller
 public class MemberController {
-
-    // Component를 이용한 서비스
     private MemberService memberService;
-
-    // Bean을 직접 등록해서 사용한 서비스
-    private MemberService memberService2;
 
     @Autowired
     public MemberController(MemberService memberService) {
@@ -35,7 +30,7 @@ public class MemberController {
         Member newMember = new Member();
         newMember.setName(form.getName());
 
-        memberService2.join(newMember);
+        memberService.join(newMember);
 
         // Redirect를 한다.
         return "redirect:/";
@@ -43,7 +38,7 @@ public class MemberController {
 
     @GetMapping("/members")
     public String list(Model model) {
-        List<Member> members = memberService2.fetchMembers();
+        List<Member> members = memberService.fetchMembers();
         model.addAttribute("members", members);
 
         return "member/memberList";
